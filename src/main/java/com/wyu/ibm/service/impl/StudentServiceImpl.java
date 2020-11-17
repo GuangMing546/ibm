@@ -19,7 +19,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public int insertStudent(Student student) {
-        return insertStudent(student);
+        return studentMapper.insertStudent(student);
     }
 
     @Override

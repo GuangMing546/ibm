@@ -5,7 +5,7 @@
 <mapper namespace="com.wyu.ibm.mapper.StudentMapper">
 <!--admin用户可以对student表进行的操作-->
     <select id="getAllStudentToAdmin" resultType="com.wyu.ibm.entity.Student">
-        select id,student_number,student_name,student_class,user_name,password from student
+        select id,student_number,student_name,student_class,user_name,password,score from student
     </select>
 
     <insert id="insertStudent">

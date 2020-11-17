@@ -7,7 +7,7 @@ public class Student {
     private String studentClass;
     private String studentName;
     private String studentNumber;
-    private double score;
+    private String score;
 
     public Integer getId() {
         return id;
@@ -57,11 +57,24 @@ public class Student {
         this.studentNumber = studentNumber;
     }
 
-    public double getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(String score) {
         this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", studentClass='" + studentClass + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", studentNumber='" + studentNumber + '\'' +
+                ", score='" + score + '\'' +
+                '}';
     }
 }

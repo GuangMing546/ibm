@@ -2,7 +2,7 @@ package com.wyu.ibm.entity;
 
 public class Teacher {
     private Integer id;
-    private String usrName;
+    private String userName;
     private String password;
     private String teacherName;
 
@@ -14,12 +14,12 @@ public class Teacher {
         this.id = id;
     }
 
-    public String getUsrName() {
-        return usrName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsrName(String usrName) {
-        this.usrName = usrName;
+    public void setUserName(String usrName) {
+        this.userName = usrName;
     }
 
     public String getPassword() {
