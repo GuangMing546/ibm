@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wyu.ibm.entity.LoginBean">
+<mapper namespace="com.wyu.ibm.mapper.LoginMapper">
     <select id="getAdminByUserName" resultType="com.wyu.ibm.entity.LoginBean">
         select password from admin where user_name=#{userName}
     </select>
