@@ -2,9 +2,18 @@ package com.wyu.ibm.entity;
 
 public class LoginBean {
     private String type;
+    private Integer id;
     private String userName;
     private String password;
     private String name;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

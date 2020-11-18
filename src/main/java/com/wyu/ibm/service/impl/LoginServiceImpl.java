@@ -12,6 +12,7 @@ public class LoginServiceImpl implements LoginService {
     @Resource
     LoginMapper loginMapper;
 
+    //返回的数据是对象LoginResult：id，url，name
     @Override
     public LoginResult checkLogin(LoginBean loginBean) {
         String type=loginBean.getType();
@@ -22,33 +23,45 @@ public class LoginServiceImpl implements LoginService {
         System.out.println("用户名："+userName);
         System.out.println("密码:"+password);
 
-        String name;
         LoginResult loginResult=new LoginResult();
         loginResult.setUrl("false");
 
+        String name;
+        Integer id;
+
+
         switch (type){
             case "管理员":
-                name=loginMapper.getAdminByUserName(userName).getName();
-                String passwordFromDBAdmin=loginMapper.getAdminByUserName(userName).getPassword();
+                loginBean=loginMapper.getAdminByUserName(userName);
+                name=loginBean.getName();
+                id=loginBean.getId();
+                String passwordFromDBAdmin=loginBean.getPassword();
                 if(passwordFromDBAdmin.equals(password)){
+                    loginResult.setId(id);
                     loginResult.setName(name);
                     loginResult.setUrl("Admin");
                     return loginResult;
                 }
                 break;
             case "老师":
-                name=loginMapper.getTeacherByUserName(userName).getName();
-                String passwordFromDBTeacher=loginMapper.getTeacherByUserName(userName).getPassword();
+                loginBean=loginMapper.getTeacherByUserName(userName);
+                name=loginBean.getName();
+                id=loginBean.getId();
+                String passwordFromDBTeacher=loginBean.getPassword();
                 if(passwordFromDBTeacher.equals(password)){
+                    loginResult.setId(id);
                     loginResult.setName(name);
                     loginResult.setUrl("Teacher");
                     return loginResult;
                 }
                 break;
             case "学生":
-                name=loginMapper.getStudentByUserName(userName).getName();
-                String passwordFromDBStudent=loginMapper.getStudentByUserName(userName).getPassword();
+                loginBean=loginMapper.getStudentByUserName(userName);
+                name=loginBean.getName();
+                id=loginBean.getId();
+                String passwordFromDBStudent=loginBean.getPassword();
                 if(passwordFromDBStudent.equals(password)){
+                    loginResult.setId(id);
                     loginResult.setName(name);
                     loginResult.setUrl("Student");
                     return loginResult;
