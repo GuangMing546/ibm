@@ -1,7 +1,6 @@
 package com.wyu.ibm.mapper;
 
 import com.wyu.ibm.entity.Student;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 

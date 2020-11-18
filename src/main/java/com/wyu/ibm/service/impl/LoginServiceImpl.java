@@ -1,11 +1,9 @@
 package com.wyu.ibm.service.impl;
 
-import com.wyu.ibm.entity.Admin;
 import com.wyu.ibm.entity.LoginBean;
-import com.wyu.ibm.entity.Student;
-import com.wyu.ibm.entity.Teacher;
 import com.wyu.ibm.mapper.LoginMapper;
 import com.wyu.ibm.service.LoginService;
+import com.wyu.ibm.util.LoginResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,36 +13,50 @@ public class LoginServiceImpl implements LoginService {
     LoginMapper loginMapper;
 
     @Override
-    public String checkLogin(LoginBean loginBean) {
-        System.out.println(loginBean.getUserName());
-        System.out.println(loginBean.getPassword());
+    public LoginResult checkLogin(LoginBean loginBean) {
         String type=loginBean.getType();
-
-        System.out.println(type);
         String userName=loginBean.getUserName();
         String password=loginBean.getPassword();
+
+        System.out.println("用户类型："+type);
+        System.out.println("用户名："+userName);
+        System.out.println("密码:"+password);
+
+        String name;
+        LoginResult loginResult=new LoginResult();
+        loginResult.setUrl("false");
+
         switch (type){
             case "管理员":
+                name=loginMapper.getAdminByUserName(userName).getName();
                 String passwordFromDBAdmin=loginMapper.getAdminByUserName(userName).getPassword();
                 if(passwordFromDBAdmin.equals(password)){
-                    return "Admin";
+                    loginResult.setName(name);
+                    loginResult.setUrl("Admin");
+                    return loginResult;
                 }
                 break;
             case "老师":
+                name=loginMapper.getTeacherByUserName(userName).getName();
                 String passwordFromDBTeacher=loginMapper.getTeacherByUserName(userName).getPassword();
                 if(passwordFromDBTeacher.equals(password)){
-                    return "localhost:8080/#/Teacher";
+                    loginResult.setName(name);
+                    loginResult.setUrl("Teacher");
+                    return loginResult;
                 }
                 break;
             case "学生":
+                name=loginMapper.getStudentByUserName(userName).getName();
                 String passwordFromDBStudent=loginMapper.getStudentByUserName(userName).getPassword();
                 if(passwordFromDBStudent.equals(password)){
-                    return "localhost:8080/#/Student";
+                    loginResult.setName(name);
+                    loginResult.setUrl("Student");
+                    return loginResult;
                 }
                 break;
             default:
 
         }
-        return "false";
+        return loginResult;
     }
 }

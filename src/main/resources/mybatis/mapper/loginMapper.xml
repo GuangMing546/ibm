@@ -8,11 +8,11 @@
     </select>
 
     <select id="getTeacherByUserName" resultType="com.wyu.ibm.entity.LoginBean">
-        select password from teacher where user_name=#{userName}
+        select password,teacher_name name from teacher where user_name=#{userName}
     </select>
 
     <select id="getStudentByUserName" resultType="com.wyu.ibm.entity.LoginBean">
-        select password from student where user_name=#{userName}
+        select password,student_name name from student where user_name=#{userName}
     </select>
 
 </mapper>
