@@ -29,7 +29,6 @@ public class LoginServiceImpl implements LoginService {
         String name;
         Integer id;
 
-
         switch (type){
             case "管理员":
                 loginBean=loginMapper.getAdminByUserName(userName);

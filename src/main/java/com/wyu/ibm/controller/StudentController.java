@@ -61,5 +61,10 @@ public class StudentController {
         return studentService.updateStudentPassword(student);
     }
 
+    @GetMapping("/getStudentById")
+    public Student getStudentById(Integer id){
+        return studentService.getStudentById(id);
+    }
+
 
 }
