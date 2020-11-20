@@ -32,6 +32,9 @@ public class LoginServiceImpl implements LoginService {
         switch (type){
             case "管理员":
                 loginBean=loginMapper.getAdminByUserName(userName);
+                if(null==loginBean){
+                    return loginResult;
+                }
                 name=loginBean.getName();
                 id=loginBean.getId();
                 String passwordFromDBAdmin=loginBean.getPassword();
@@ -44,6 +47,9 @@ public class LoginServiceImpl implements LoginService {
                 break;
             case "老师":
                 loginBean=loginMapper.getTeacherByUserName(userName);
+                if(null==loginBean){
+                    return loginResult;
+                }
                 name=loginBean.getName();
                 id=loginBean.getId();
                 String passwordFromDBTeacher=loginBean.getPassword();
@@ -56,6 +62,9 @@ public class LoginServiceImpl implements LoginService {
                 break;
             case "学生":
                 loginBean=loginMapper.getStudentByUserName(userName);
+                if(null==loginBean){
+                    return loginResult;
+                }
                 name=loginBean.getName();
                 id=loginBean.getId();
                 String passwordFromDBStudent=loginBean.getPassword();

@@ -42,7 +42,7 @@ public class TeacherController {
     /*Teacher用户对teacher表的操作*/
     //teacher界面修改老师的密码
     @PostMapping("/updateTeacherPassword")
-    public int updateTeacherPassword(Teacher teacher){
+    public int updateTeacherPassword(@RequestBody Teacher teacher){
         return teacherService.updateTeacherPassword(teacher);
     }
 
