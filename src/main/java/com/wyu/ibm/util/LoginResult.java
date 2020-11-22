@@ -3,7 +3,7 @@ package com.wyu.ibm.util;
 public class LoginResult {
     private String url;
     private String name;
-    private Integer id;
+    private Integer id; //原来修改密码的时候的依据凭证
 
     public Integer getId() {
         return id;
