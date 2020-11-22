@@ -32,36 +32,39 @@ public class LoginServiceImpl implements LoginService {
         switch (type){
             case "管理员":
                 loginBean=loginMapper.getAdminByUserName(userName);
-                name=loginBean.getName();
-                id=loginBean.getId();
+                if(null==loginBean){
+                    return loginResult;
+                }
                 String passwordFromDBAdmin=loginBean.getPassword();
                 if(passwordFromDBAdmin.equals(password)){
-                    loginResult.setId(id);
-                    loginResult.setName(name);
+                    loginResult.setId(loginBean.getId());
+                    loginResult.setName(loginBean.getName());
                     loginResult.setUrl("Admin");
                     return loginResult;
                 }
                 break;
             case "老师":
                 loginBean=loginMapper.getTeacherByUserName(userName);
-                name=loginBean.getName();
-                id=loginBean.getId();
+                if(null==loginBean){
+                    return loginResult;
+                }
                 String passwordFromDBTeacher=loginBean.getPassword();
                 if(passwordFromDBTeacher.equals(password)){
-                    loginResult.setId(id);
-                    loginResult.setName(name);
+                    loginResult.setId(loginBean.getId());
+                    loginResult.setName(loginBean.getName());
                     loginResult.setUrl("Teacher");
                     return loginResult;
                 }
                 break;
             case "学生":
                 loginBean=loginMapper.getStudentByUserName(userName);
-                name=loginBean.getName();
-                id=loginBean.getId();
+                if(null==loginBean){
+                    return loginResult;
+                }
                 String passwordFromDBStudent=loginBean.getPassword();
                 if(passwordFromDBStudent.equals(password)){
-                    loginResult.setId(id);
-                    loginResult.setName(name);
+                    loginResult.setId(loginBean.getId());
+                    loginResult.setName(loginBean.getName());
                     loginResult.setUrl("Student");
                     return loginResult;
                 }
